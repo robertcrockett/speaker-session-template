@@ -27,6 +27,21 @@ function SpeakerImage({ id, first, last }) {
   );
 }
 
+function SpeakerFavorite({ favorite }) {
+  return (
+    <div classname='action padB1'>
+      <span>
+        <i
+          className={
+            favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
+          }
+        />{" "}
+        Favorite{" "}
+      </span>
+    </div>
+  );
+}
+
 function SpeakerDemographics({
   first,
   last,
@@ -42,10 +57,9 @@ function SpeakerDemographics({
           {first} {last}
         </h3>
       </div>
+      <SpeakerFavorite favorite={favorite} />
       <div>
-        <p className='card-description'>
-          {bio} {company} {twitterHandle} {favorite}
-        </p>
+        <p className='card-description'>{bio}</p>
         <div className='social d-flex flex-row mt-4'>
           <div className='company'>
             <h5>Company</h5>
@@ -61,7 +75,7 @@ function SpeakerDemographics({
   );
 }
 
-function Speaker({ speaker }) {
+function Speaker({ speaker, showSessions }) {
   const { id, first, last, sessions } = speaker;
 
   return (
@@ -70,7 +84,7 @@ function Speaker({ speaker }) {
         <SpeakerImage id={id} first={first} last={last} />
         <SpeakerDemographics {...speaker} />
       </div>
-      <Sessions sessions={sessions} />
+      {showSessions === true ? <Sessions sessions={sessions} /> : null}
     </div>
   );
 }
