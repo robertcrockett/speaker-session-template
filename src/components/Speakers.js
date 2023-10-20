@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { data } from "../../SpeakerData";
-import Header from "./Header";
 import SpeakersList from "./SpeakersList";
 import SpeakersToolbar from "./SpeakersToolbar";
 
-function Speakers({ showSessions, setShowSessions, theme, setTheme }) {
+function Speakers({ data, theme, setTheme }) {
+  const [showSessions, setShowSessions] = useState(true);
+
   return (
     <>
       <SpeakersToolbar
-        showSessions={showSessions}
-        setShowSessions={setShowSessions}
         theme={theme}
         setTheme={setTheme}
+        showSessions={showSessions}
+        setShowSessions={setShowSessions}
       />
-      <SpeakersList data={data} />
+      <SpeakersList data={data} showSessions={showSessions} />
     </>
   );
 }
