@@ -29,7 +29,7 @@ function SpeakerImage({ id, first, last }) {
 
 function SpeakerFavorite({ favorite, onFavoriteToggle }) {
   return (
-    <div classname='action padB1'>
+    <div className='action padB1'>
       <span onClick={onFavoriteToggle}>
         <i
           className={
