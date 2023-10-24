@@ -6,22 +6,16 @@ function SpeakersList({ showSessions }) {
   const [speakerData, setSpeakerData] = useState(data);
 
   function onFavoriteToggle(id) {
-    console.log("ID:", id);
-
     // Obtain the original speaker record using the passed in key
     const speakerRecOriginal = speakerData.find(function (rec) {
       return rec.id === id;
     });
-
-    console.log("Previous", speakerRecOriginal);
 
     // Spread the properties of the original record and update the favorite property
     const speakerRecUpdated = {
       ...speakerRecOriginal,
       favorite: !speakerRecOriginal.favorite,
     };
-
-    console.log("Updated", speakerRecUpdated);
 
     // Map the speaker data, when the changed record is identified, update that record. Otherwise use the original record
     const speakersDataUpdated = speakerData.map(function (rec) {
